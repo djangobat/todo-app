@@ -1,0 +1,97 @@
+{% extends "_base.html" %}
+{% block title %}
+Tạo Task mới
+{% endblock title %}
+{% block main %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="page-title">
+            <h3>Tạo Task mới</h3>
+            <p class="page-desc">
+                Tiến hành tạo task mới để thực hiện
+            </p>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xl">
+        <div class="card">
+            <div class="card-body">
+                <form>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label>Nội dung Task</label>
+                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1">Topic</label>
+                                <select class="form-control" id="exampleFormControlSelect1">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="custom-control custom-radio">
+                            <input class="custom-control-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked="">
+                            <label class="custom-control-label" for="exampleRadios1">
+                                Radio #1
+                            </label>
+                        </div>
+                        <div class="custom-control custom-radio">
+                            <input class="custom-control-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                            <label class="custom-control-label" for="exampleRadios2">
+                                Radio #2
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Ngày bắt đầu</label>
+                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Ngày kết thúc</label>
+                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Số lượng</label>
+                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1">Đơn vị</label>
+                                <select class="form-control" id="exampleFormControlSelect1">
+                                    <option>Ngày</option>
+                                    <option>Giờ</option>
+                                    <option>Tháng</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Tạo task</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock main %}

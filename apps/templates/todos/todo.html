@@ -1,0 +1,112 @@
+{% extends "_base.html" %}
+{% load todo_tags %}
+{% block title %}
+To-Do List
+{% endblock title %}
+{% block main %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="page-title">
+            <h3>Todo App</h3>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg">
+        <div class="card">
+            <div class="card-body">
+                <div class="chartjs-size-monitor">
+                    <div class="chartjs-size-monitor-expand">
+                        <div class=""></div>
+                    </div>
+                    <div class="chartjs-size-monitor-shrink">
+                        <div class=""></div>
+                    </div>
+                </div>
+                <h5 class="card-title">Line Chart</h5>
+                <canvas id="chartjs1" style="display: block; width: 490px; height: 245px;" width="490" height="245" class="chartjs-render-monitor">Your browser does not support the canvas element.</canvas>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg">
+        <div class="card">
+            <div class="card-body">
+                <div class="chartjs-size-monitor">
+                    <div class="chartjs-size-monitor-expand">
+                        <div class=""></div>
+                    </div>
+                    <div class="chartjs-size-monitor-shrink">
+                        <div class=""></div>
+                    </div>
+                </div>
+                <h5 class="card-title">Bar Chart</h5>
+                <canvas id="chartjs2" width="490" height="245" class="chartjs-render-monitor" style="display: block; width: 490px; height: 245px;">Your browser does not support the canvas element.</canvas>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="todo-sidebar">
+                            <div class="todo-new-task">
+                                <a class="btn btn-primary btn-block text-white" href="{% url 'create_task' %}">Thêm Task</a>
+                            </div>
+                            <div class="todo-menu">
+                                <h3>Lọc</h3>
+                                <ul class="list-unstyled">
+                                    {% for value, label in form.fields.status.choices %}
+                                        {% if forloop.first %}
+                                        <li><a href="."><i class="fas fa-bars"></i>Tất cả</a></li>
+                                        {% else %}
+                                        <li><a href="{% url 'todo' %}?status={{ value }}">{{ label|safe }}</a></li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                                <h3>Topics <a href="{% url 'create_topic' %}"><i class="fa fa-plus text-success"></i></a></h3>
+                                <div class="wi-tags">
+                                    {% for topic in topics %}
+                                    <a href="{% url 'todo' %}?topic={{ topic.id }}"><span class="badge {{ topic|bg_color }}">{{ topic.title }}</span></a>
+                                    {% endfor %}
+                                    <a href="{% url 'create_topic' %}" class="new-topic"><i class="fa fa-plus text-success"></i></a>
+                                    New
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="dropdown mb-3">
+                            <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Tất cả
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" x-placement="top-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, -136px, 0px);">
+                                {% for value, label in form.fields.created.choices %}
+                                    {% if not forloop.first %}
+                                    <li><a href="{% url 'todo' %}?created={{ value }}">{{ label|safe }}</a></li>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="todo-list">
+                            <ul class="list-unstyled task-sortable">
+                            {% include "todos/includes/list.html" %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock main %}
+
+{% block scripts %}
+<script>
+    $(function(){
+        $('.task-sortable').sortable();
+    });
+</script>
+{% endblock scripts %}

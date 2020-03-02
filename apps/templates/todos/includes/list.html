@@ -1,0 +1,11 @@
+{% load todo_tags %}
+{% for task in tasks %}
+<li>
+    <a href="#" class="custom-checkbox {% if task.is_completed %}done{% endif %}">
+        <input type="checkbox" class="custom-control-input" {% if task.is_completed %}checked{% endif %} id="task{{ task.id }}">
+        <label class="custom-control-label" for="task{{ task.id }}"></label>
+        {{ task.title }}
+        <span class="badge {{ task.topic|bg_color }} float-right">{{ task.topic }}</span>
+    </a>
+</li>
+{% endfor %}

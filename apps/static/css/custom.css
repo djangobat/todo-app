@@ -1,0 +1,18 @@
+.wi-tags a{
+    display: inline-block;
+    padding: 0.25rem .375rem;
+    line-height: 2;
+    font-size: .875rem;
+}
+
+a.new-topic {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    line-height: 25px;
+    border: 1px dashed #292424;
+    text-align: center;
+}
